@@ -1,23 +1,27 @@
  @echo off
- set exdirec092893934=
- set file_found09812132=1
+ set exdirec=
+ set file_found=1
  set hidden_29831212982=false
- set str_jkdjahiells=%1
- if exist %str_jkdjahiells% (pushd %str_jkdjahiells% 2>NUL)
- if exist %str_jkdjahiells% (if "%errorlevel%"=="0" (echo This is a directory.&goto :heheKLdKlask))
- for /f "tokens=1,2 delims= " %%i in ('dir %str_jkdjahiells% 2^>NUL') do set exdirec092893934=%%i %%j
- if "%exdirec092893934%"=="0 Dir(s)" (set file_found09812132=0)
- if %file_found09812132%==0 echo File Found!&goto :next094821933
- if "%file_found09812132%" NEQ "0" for /f "tokens=1,2 delims= " %%i in ('dir /ah %str_jkdjahiells% 2^>NUL') do set exdirec092893934=%%i %%j
- if NOT EXIST %str_jkdjahiells% echo. echo. >NUL& echo. ------^>%str_jkdjahiells%^<-------&echo. Please check&goto :eof
- if "%exdirec092893934%"=="0 Dir(s)" (set file_found09812132=0)
- if %file_found09812132%==0 (echo File is Hidden,&goto :eof) else (goto :eof)
- :next094821933
- if exist %str_jkdjahiells% for /f "delims=" %%i in ('dir /s /b /a-d %str_jkdjahiells% 2^>NUL') do call :delete "%%i"
- goto :heheKLdKlask
+ set str=%1
+ if exist %str% (pushd %str% 2>NUL)
+ set /a err_level=%errorlevel%
+ popd
+ if exist %str% if "%err_level%"=="0" (echo This is a directory.&goto :hehe)
+ for /f "tokens=1,2 delims= " %%i in ('dir %str% 2^>NUL') do set exdirec=%%i %%j
+ if "%exdirec%"=="0 Dir(s)" (set file_found=0)
+ if %file_found%==0 echo File Found!&goto :next
+ if "%file_found%" NEQ "0" for /f "tokens=1,2 delims= " %%i in ('dir /ah %str% 2^>NUL') do set exdirec=%%i %%j
+ if NOT EXIST %str% echo. echo. >NUL& echo. ------^>%str%^<-------&echo. Please check&goto :eof
+ if "%exdirec%"=="0 Dir(s)" (set file_found=0)
+ if %file_found%==0 (echo File is Hidden,&goto :eof) else (goto :eof)
+ :next
+ if exist %str% for /f "delims=" %%i in ('dir /s /b /a-d %str% 2^>NUL') do call :delete "%%i"
+ goto :hehe
  :delete
  del /p %1
  if not exist %1 echo.File Deleted.
  Exit /B
- :heheKLdKlask
+ :hidden
+ Echo. Yaan File is hidden.......please solve it
+ :hehe
  popd
