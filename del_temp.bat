@@ -1,7 +1,6 @@
  @echo off
  set exdirec=
  set file_found=1
- set hidden_29831212982=false
  set str=%1
  if exist %str% (pushd %str% 2>NUL)
  set /a err_level=%errorlevel%
