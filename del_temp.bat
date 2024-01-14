@@ -21,7 +21,5 @@
  del /p %1
  if not exist %1 echo.File Deleted.
  Exit /B
- :hidden
- Echo. Yaan File is hidden.......please solve it
  :hehe
  popd
