@@ -18,7 +18,7 @@
  goto :hehe
  :delete
  del /p %1
- if not exist %1 echo.File Deleted.
+ if not exist %1 (echo.File Deleted.) else (echo.Cancelled.&echo.Checking ..&if exist %1 echo.Found! ----^>%1 )
  Exit /B
  :hehe
  popd
