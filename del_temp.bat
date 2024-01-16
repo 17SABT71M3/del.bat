@@ -1,7 +1,8 @@
  @echo off
  set exdirec=
  set file_found=1
- set str=%1
+ set str="%1"
+ echo %str%
  if exist %str% (pushd %str% 2>NUL)
  set /a err_level=%errorlevel%
  popd
@@ -17,8 +18,11 @@
  if exist %str% for /f "delims=" %%i in ('dir /s /b /a-d %str% 2^>NUL') do call :delete "%%i"
  goto :hehe
  :delete
+ if %1=="%userprofile%\Desktop\del.bat" echo.This File can not be deleted.&goto :eof
+ if %1=="%userprofile%\Desktop\del_temp.bat" echo.This File can not be deleted.&goto :eof
  del /p %1
- if not exist %1 (echo.File Deleted.) else (echo.Cancelled.&echo.Checking ..&if exist %1 echo.Found! ----^>%1 )
+ echo %errorlevel%
+ if not exist %1 (if %errorlevel%==0 (echo.File Deleted.) else (echo.Error finding file,)) else (echo.Cancelled.&echo.--^>Checking ..&if exist %1 echo.Found! ----^>%1 )
  Exit /B
  :hehe
  popd
