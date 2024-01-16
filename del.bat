@@ -1,10 +1,12 @@
-REM %1 hahahahaha
 @echo off
+REM echo."%~fp0" %1
+
+
 title REM
 
 echo.
 
-echo.--File Deletion is Disabled-- Press [Z]
+echo.    File Deletion Disabled  ***Press [Z] to override***
 
 echo.
 
@@ -28,7 +30,7 @@ REM echo.Running del_temp
  if "%exdirec%"=="0 Dir(s)" (set file_found=0)
  if %file_found%==0 echo File Found!&goto :next
  if "%file_found%" NEQ "0" for /f "tokens=1,2 delims= " %%i in ('dir /ah %str% 2^>NUL') do set exdirec=%%i %%j
- if NOT EXIST %str% echo. echo. >NUL& echo. ------^>%str%^<-------&echo. Please check&goto :eof
+ if NOT EXIST %str% echo. echo. >NUL& echo. ------^>%str%^<-------&echo.(UNKNOWN ARGUMENT) Please check&goto :eof
  if "%exdirec%"=="0 Dir(s)" (set file_found=0)
  if %file_found%==0 (echo File is Hidden,&goto :eof) else (goto :eof)
  :next
@@ -39,7 +41,7 @@ REM echo.Running del_temp
  if %1=="%userprofile%\Desktop\del.bat" echo.This File can not be deleted.&goto :eof
  if %1=="%userprofile%\Desktop\del_temp.bat" echo.This File can not be deleted.&goto :eof
  del /p %1
- echo %errorlevel%
+ echo errorlevel:%errorlevel%
  if not exist %1 (if %errorlevel%==0 (echo.File Deleted.) else (echo.Error finding file,)) else (echo.Cancelled.&echo.--^>Checking ..&if exist %1 echo.Found! ----^>%1 )
  Exit /B
  :hehe
