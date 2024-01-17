@@ -13,4 +13,4 @@ Update: Added support for Whitelists (whitelist.txt) and Blacklists (blacklist.t
 Black lists cut thru the chase when there is no problem deleting a file. You are
 still prompted.
 White lists on the other hand strike down file deletion.
-Example Usage- ```whitelist.bat .\something.png```
+<br>Example Usage- ```whitelist.bat .\something.png```
