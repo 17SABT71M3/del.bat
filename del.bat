@@ -1,4 +1,11 @@
 @echo off
+set str=%1
+set arg=%2
+if defined arg if "%arg%"=="?" set file_return="%~fp1"
+if defined arg if "%arg%"=="?" echo %file_return%&goto :eof
+for /f "delims=" %%i in ('"%~fp0" %str% ?') DO set file_name=%%i
+set /a blacklist=0
+if defined str if exist "%userprofile%\desktop\blacklist.txt" set /a blacklist=1&type "%userprofile%\desktop\blacklist.txt" | findstr /n /c:%file_name% &&(echo.MATCHES BLACKLIST&goto :del_temp)
 REM echo."%~fp0" %1
 
 
@@ -20,8 +27,6 @@ REM echo.Running del_temp
  @echo off
  set exdirec=
  set file_found=1
- set str=%1
-
  if exist %str% (pushd %str% 2>NUL)
  set /a err_level=%errorlevel%
  popd
@@ -38,14 +43,14 @@ REM echo.Running del_temp
  if exist %str% goto :delete
  goto :hehe
  :delete
- if exist "%userprofile%\desktop\blacklist.txt" for /f "delims=" %%i in ('dir /s /b /a-d %str% 2^>NUL') DO type "%userprofile%\desktop\blacklist.txt" | find /i "%%i" &&goto :deletealready
- if exist "%userprofile%\desktop\whitelist.txt" for /f "delims=" %%i in ('dir /s /b /a-d %str% 2^>NUL') DO type "%userprofile%\desktop\whitelist.txt" | find /i "%%i" &&echo.This File can not be deleted.&goto :eof
+ if exist "%userprofile%\desktop\whitelist.txt"  type "%userprofile%\desktop\whitelist.txt" | find /i %file_name% >NUL&&(echo.This File can not be deleted.&goto :eof)
  if %1=="%userprofile%\Desktop\del.bat" echo.This File can not be deleted.&goto :eof
  if %1=="%userprofile%\Desktop\del_temp.bat" echo.This File can not be deleted.&goto :eof
  :deletealready
  del /p %1
- echo errorlevel:%errorlevel%
- if not exist %1 (if %errorlevel%==0 (echo.File Deleted.) else (echo.Error finding file,)) else (echo.Cancelled.&echo.--^>Checking ..&if exist %1 echo.Found! ----^>%1 )
+ if %blacklist%==0 echo errorlevel:%errorlevel%
+ if %blacklist%==1 echo.&echo.
+ if not exist %1 (if %errorlevel%==0 (echo.File Deleted.) else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.--^>Checking ..&if exist %1 echo.Found! ----^>%1 )
  Exit /B
  :hehe
  popd
