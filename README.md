@@ -16,7 +16,7 @@ White lists on the other hand strike down file deletion.
 <br>Example Usage- ```whitelist.bat .\something.png```
 
 Added Features
-You can now hide blacklist.txt using attrib +h command
+<br>You can now hide blacklist.txt using attrib +h command
 
 Additional Features/Suggestions to think thru-
 <br>Move Files to temporary folder instead of delete
