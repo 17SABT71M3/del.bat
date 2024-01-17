@@ -10,3 +10,6 @@ doskey del="c:\users\anl bfppa\desktop\del.bat" $*
 doskey notepad="c:\users\anl bfppa\desktop\notepad.bat" $*
 ```
 Update: Added support for Whitelists (whitelist.txt) and Blacklists (blacklist.txt)
+Black lists cut thru the chase when there is no problem deleting a file. You are
+still prompted.
+White lists on the other hand disallow file deletion.
