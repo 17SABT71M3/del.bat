@@ -14,3 +14,9 @@ Black lists cut thru the chase when there is no problem deleting a file. You are
 still prompted.
 White lists on the other hand strike down file deletion.
 <br>Example Usage- ```whitelist.bat .\something.png```
+
+Additional Pending Features/Suggestions-
+<br>Move Files to temporary folder instead of delete
+<br>Lockdown del.bat Write/Delete
+<br>Hide blacklist.bat (attrib +H)
+
