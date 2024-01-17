@@ -47,7 +47,9 @@ REM echo.Running del_temp
  if exist %str% goto :delete
  goto :hehe
  :delete
- if not exist "%userprofile%\desktop\whitelist.txt"  for /f "delims=" %%i in ('dir "%userprofile%\desktop\whitelist.txt" /ah') do set /a whitelist_Exists=1
+
+ if not exist "%userprofile%\desktop\whitelist.txt"  for /f "delims=" %%i in ('dir /b "%userprofile%\desktop\whitelist.txt" /ah 2^>NUL') do set /a whitelist_Exists=1
+
  if exist "%userprofile%\desktop\whitelist.txt" set /a whitelist_Exists=1
  if %whiteList_Exists%==1 type "%userprofile%\desktop\whitelist.txt" | find /i %file_name% >NUL&&(echo.This File can not be deleted.&goto :eof)
  if %1=="%userprofile%\Desktop\del.bat" echo.This File can not be deleted.&goto :eof
