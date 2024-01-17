@@ -15,8 +15,10 @@ still prompted.
 White lists on the other hand strike down file deletion.
 <br>Example Usage- ```whitelist.bat .\something.png```
 
-Additional Pending Features/Suggestions-
+Added Features
+You can now hide blacklist.txt using attrib +h command
+
+Additional Features/Suggestions to think thru-
 <br>Move Files to temporary folder instead of delete
-<br>Lockdown del.bat Write/Delete
-<br>Hide blacklist.bat (attrib +H)
+<br>Mechanism to Lockdown del.bat Write/Delete
 
