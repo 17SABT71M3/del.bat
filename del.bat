@@ -5,6 +5,7 @@ set /a whitelist_Exists=0
 set /a blacklist_Exists=0
 set str=%1
 set arg=%2
+if not defined str goto :eof
 if defined arg if "%arg%"=="?" set file_return="%~fp1"
 if defined arg if "%arg%"=="?" echo %file_return%&goto :eof
 for /f "delims=" %%i in ('"%~fp0" %str% ?') DO set file_name=%%i
@@ -16,15 +17,13 @@ REM echo."%~fp0" %1
 
 
 title REM
+echo./----------------------------------------.
+echo.^| File Deletion Disabled !               ^|
+echo..----------------------------------------^/
 
-echo.
+echo.                                   Press Z
+echo.                                to Persist
 
-echo.    File Deletion Disabled  ***Press [Z] to override***
-
-echo.
-
-echo.
-echo. 
 choice /n /c YNZ /d y /t 1 >NUL
 if %errorlevel%==3 goto :del_temp
 goto :eof
