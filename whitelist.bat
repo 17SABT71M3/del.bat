@@ -14,5 +14,5 @@ if %count% GTR 0 for /f "skip=%count% delims=" %%i in ('"%~fp0" %1 ?  2^>NUL') d
 :next
 echo WHITELIST file? %file_name% 
 choice /c yn
-if %errorlevel%==1 type "%userprofile%\desktop\whitelist.txt" | find /i %file_name% >NUL&& echo. >NUL || echo %file_name% >> "%userprofile%\desktop\whitelist.txt"
+if %errorlevel%==1 type "%userprofile%\desktop\whitelist.txt" 2^>NUL | find /i %file_name% >NUL&& echo. >NUL || echo %file_name% >> "%userprofile%\desktop\whitelist.txt"
 if %count% LSS %index% goto loop
