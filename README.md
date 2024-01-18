@@ -22,4 +22,5 @@ Added Features
 Additional Features/Suggestions to think thru-
 <br>Move Files to temporary folder instead of delete
 <br>Mechanism to Lockdown del.bat Write/Delete
+<br>Code Standardization and cleanup for easier customization
 
