@@ -2,7 +2,7 @@ U can replace the `DEL` command by a combination using the `DOSKEY` macro and up
 the registry key `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor`<br>
 and adding a string (`AutoRun`) containing path of the doskey macro  
 
-This is What my AutoRun file looks like
+This is What my DOSKEY macro file looks like
 ```
 @echo off
 
