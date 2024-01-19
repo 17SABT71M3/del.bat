@@ -21,7 +21,7 @@ Added Features
 <br>Remove the line containing ```set /a belessverbose=0``` for less verbosity.
 
 Additional Features/Suggestions to think thru-
-<br>Move Files to temporary folder instead of delete
+<br>Move Files to temporary folder instead of delete ✅
 <br>Mechanism to Lockdown del.bat Write/Delete
 <br>Code Standardization and cleanup for easier customization
 
