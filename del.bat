@@ -9,7 +9,7 @@ set arg=%2
 if not defined str goto :eof
 if defined arg if "%arg%"=="?" set file_return="%~fp1"
 if defined arg if "%arg%"=="?" echo %file_return%&goto :eof
-for /f "delims=" %%i in ('"%~fp0" %str% ?') DO set file_name=%%i
+for /f "delims=" %%i in ('CALL "%~fp0" %str% ?') DO set file_name=%%i
 set /a blacklist=0
 if exist "%userprofile%\desktop\blacklist.txt" set /a blacklist_exists=1
 if exist "%userprofile%\desktop\blacklist.txt" for /f "delims=" %%i in ('dir "%userprofile%\desktop\blacklist.txt" /ah') do set /a  blacklist_exists=1
@@ -18,14 +18,13 @@ REM echo."%~fp0" %1
 
 
 title REM
-echo./----------------------------------------.
-echo.^| File Deletion Disabled !               ^|
-echo..----------------------------------------^/
+echo.  [4m File Deletion is Disabled ![0m             
+echo.
+echo.press z to do [delete] anyways
 
-echo.                                   Press Z
-echo.                                to Persist
 
 choice /n /c YNZ /d y /t 1 >NUL
+echo  [1m
 if %errorlevel%==3 goto :del_temp
 goto :eof
 :del_temp
@@ -49,7 +48,6 @@ REM echo.Running del_temp
  if exist %str% goto :delete
  goto :hehe
  :delete
-
  if not exist "%userprofile%\desktop\whitelist.txt"  for /f "delims=" %%i in ('dir /b "%userprofile%\desktop\whitelist.txt" /ah 2^>NUL') do set /a whitelist_Exists=1
 
  if exist "%userprofile%\desktop\whitelist.txt" set /a whitelist_Exists=1
@@ -57,16 +55,20 @@ REM echo.Running del_temp
  if %1=="%userprofile%\Desktop\del.bat" echo.This File can not be deleted.&goto :eof
  if %1=="%userprofile%\Desktop\del_temp.bat" echo.This File can not be deleted.&goto :eof
  :deletealready
- 
+ echo  [0m
  for /f "delims=" %%i in ('dir /o-d /tc /b /a-d "%userprofile%\Desktop\Delete_temp"') do set last_file=%%i
- if defined belessverbose echo.Copying files to Recycle Bin (delete_temp). last file to be deleted from delete_temp=%last_file%
- 
+ if defined belessverbose echo._________________________________________
+ if defined belessverbose echo.Copying files to Recycle Bin (delete_temp). &echo.your oldest file will be deleted from                                 &echo|set/p=                   delete_temp folder& for /f "tokens=*" %%i in ("%last_file%") do echo. ---^>"%%i"
+ if defined belessverbose echo._________________________________________
  if defined belessverbose (copy %1 "%userprofile%\Desktop\Delete_temp") else (copy %1 "%userprofile%\Desktop\Delete_temp" 1>NUL 2>NUL)
+
+
  del /p %1
- if defined belessverbose echo  = = = = = = = = = 
+
  if %blacklist%==0 echo errorlevel:%errorlevel%
  if %blacklist%==1 echo.&echo.
- if not exist %1 (if %errorlevel%==0 (echo.File Deleted.&echo Trying to del "%userprofile%\Desktop\Delete_temp\%last_file%"&del "%userprofile%\Desktop\Delete_temp\%last_file%") else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.--^>Checking ..&if exist %1 echo.Found! ----^>%1 )
+ 
+ if not exist %1 (if %errorlevel%==0 (echo.File Deleted.&echo Trying to del "%userprofile%\Desktop\Delete_temp\%last_file%"&del "%userprofile%\Desktop\Delete_temp\%last_file%") else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.-- Checking if deleted ..&if exist %1 echo.No ----^>%1 )
  Exit /B
  :hehe
  popd
