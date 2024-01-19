@@ -26,7 +26,7 @@ File  :    Desktop\blacklist.txt
 ```
 
 Added Features
-<br>✅Added support for saving (copy of) last deleted file in del_temp folder in desktop.
+<br>✅Added support for saving (copy of) last deleted file in delete_temp folder in desktop.
 <br>✅Remove the line containing ```set /a belessverbose=0``` for less verbosity.
 
 
