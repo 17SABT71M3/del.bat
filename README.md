@@ -15,13 +15,22 @@ still prompted.
 White lists on the other hand strike down file deletion.
 <br>Example Usage- ```whitelist.bat .\something.png```
 
+You can attrib +h all the files, including `del.bat`,`blacklist.bat`,`whitelist.bat`,`blacklist.txt`, etc
+to hide them from the Desktop view
+
+The program <b>over writes</b> the following locations, Make sure u do not have any files/folders with the same name
+```
+Folder:    Desktop\del_temp  
+File  :    Desktop\whitelist.txt
+File  :    Desktop\blacklist.txt
+```
+
 Added Features
-<br>✅You can now hide blacklist.txt using attrib +h command
 <br>✅Added support for saving (copy of) last deleted file in del_temp folder in desktop.
 <br>✅Remove the line containing ```set /a belessverbose=0``` for less verbosity.
-<br>✅Move Files to temporary folder instead of delete 
+
 
 Additional Features/Suggestions to think thru-
-<br>Mechanism to Lockdown del.bat Write/Delete
+<br>Mechanism to Lockdown del.bat Write/Delete 
 <br>Code Standardization and cleanup for easier customization
 
