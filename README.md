@@ -18,7 +18,7 @@ White lists on the other hand strike down file deletion.
 Added Features
 <br>You can now hide blacklist.txt using attrib +h command
 <br>Added support for saving (copy of) last deleted file in del_temp folder in desktop.
-<br>Remove the first (or second?) line containing the code ```set /a belessverbose=0``` for less verbosity.
+<br>Remove the line containing ```set /a belessverbose=0``` for less verbosity.
 
 Additional Features/Suggestions to think thru-
 <br>Move Files to temporary folder instead of delete
