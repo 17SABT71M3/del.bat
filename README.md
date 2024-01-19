@@ -20,7 +20,7 @@ to hide them from the Desktop view
 
 The program <b>over writes</b> the following locations, Make sure u do not have any files/folders with the same name
 ```
-Folder:    Desktop\del_temp  
+Folder:    Desktop\delete_temp  
 File  :    Desktop\whitelist.txt
 File  :    Desktop\blacklist.txt
 ```
