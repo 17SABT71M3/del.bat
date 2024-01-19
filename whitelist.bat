@@ -1,9 +1,11 @@
 @echo off
+set file_name="%~1"
+if NOT EXIST %file_name% goto :eof
 set arg=%2
 set /a count=-1
 set /a counter=0
 if defined arg if "%arg%"=="?" set file_name="%~fp1"
-if defined arg if "%arg%"=="?" (if exist %file_name% echo %file_name%)&goto :eof
+if defined arg if "%arg%"=="?" (if exist file_name echo %file_name%)&goto :eof
 for /f "delims=" %%i in ('"%~fp0" %1 ? ') do set /a counter+=1
 if %counter%==0 echo.Unable to Index File & goto :eof
 set /a index=counter-1

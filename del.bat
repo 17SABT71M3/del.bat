@@ -6,9 +6,9 @@ set /a whitelist_Exists=0
 set /a blacklist_Exists=0
 set str=%1
 set arg=%2
-if not defined str goto :eof
+if not defined str GOTO :nothing_but_the_end
 if defined arg if "%arg%"=="?" set file_return="%~fp1"
-if defined arg if "%arg%"=="?" echo %file_return%&goto :eof
+if defined arg if "%arg%"=="?" echo %file_return% &GOTO :EOF
 for /f "delims=" %%i in ('CALL "%~fp0" %str% ?') DO set file_name=%%i
 set /a blacklist=0
 if exist "%userprofile%\desktop\blacklist.txt" set /a blacklist_exists=1
@@ -18,15 +18,15 @@ REM echo."%~fp0" %1
 
 
 title REM
-echo.  [4m File Deletion is Disabled ![0m             
+echo. [0m [4m File Deletion is Disabled ![0m             
 echo.
 echo.press z to do [delete] anyways
 
 
 choice /n /c YNZ /d y /t 1 >NUL
-echo  [1m
+
 if %errorlevel%==3 goto :del_temp
-goto :eof
+GOTO :nothing_but_the_end
 :del_temp
 REM echo.Running del_temp
  @echo off
@@ -40,9 +40,9 @@ REM echo.Running del_temp
  if "%exdirec%"=="0 Dir(s)" (set file_found=0)
  if %file_found%==0 echo File Found!&goto :next
  if "%file_found%" NEQ "0" for /f "tokens=1,2 delims= " %%i in ('dir /ah %str% 2^>NUL') do set exdirec=%%i %%j
- if NOT EXIST %str% echo. echo. >NUL& echo. ------^>%str%^<-------&echo.(UNKNOWN ARGUMENT) Please check&goto :eof
+ if NOT EXIST %str% echo. echo. >NUL& echo. ------^>%str%^<-------&echo.(UNKNOWN ARGUMENT) Please check&GOTO :nothing_but_the_end
  if "%exdirec%"=="0 Dir(s)" (set file_found=0)
- if %file_found%==0 (echo File is Hidden,&goto :eof) else (goto :eof)
+ if %file_found%==0 (echo File is Hidden,&GOTO :nothing_but_the_end) else (GOTO :nothing_but_the_end)
  :next
  REM if exist %str% for /f "delims=" %%i in ('dir /s /b /a-d %str% 2^>NUL') do echo Running delete "%%i"&set filetodelete="%%i"
  if exist %str% goto :delete
@@ -51,9 +51,9 @@ REM echo.Running del_temp
  if not exist "%userprofile%\desktop\whitelist.txt"  for /f "delims=" %%i in ('dir /b "%userprofile%\desktop\whitelist.txt" /ah 2^>NUL') do set /a whitelist_Exists=1
 
  if exist "%userprofile%\desktop\whitelist.txt" set /a whitelist_Exists=1
- if %whiteList_Exists%==1 type "%userprofile%\desktop\whitelist.txt" | find /i %file_name% >NUL&&(echo.This File can not be deleted.&goto :eof)
- if %1=="%userprofile%\Desktop\del.bat" echo.This File can not be deleted.&goto :eof
- if %1=="%userprofile%\Desktop\del_temp.bat" echo.This File can not be deleted.&goto :eof
+ if %whiteList_Exists%==1 type "%userprofile%\desktop\whitelist.txt" | find /i %file_name% >NUL&&(echo.This File can not be deleted.&GOTO :nothing_but_the_end)
+ if %1=="%userprofile%\Desktop\del.bat" echo.This File can not be deleted.&GOTO :nothing_but_the_end
+ if %1=="%userprofile%\Desktop\del_temp.bat" echo.This File can not be deleted.&GOTO :nothing_but_the_end
  :deletealready
  echo  [0m
  for /f "delims=" %%i in ('dir /o-d /tc /b /a-d "%userprofile%\Desktop\Delete_temp"') do set last_file=%%i
@@ -72,3 +72,5 @@ REM echo.Running del_temp
  Exit /B
  :hehe
  popd
+ :NOTHING_but_THE_end
+ ECHO|SET/P=[0m   
