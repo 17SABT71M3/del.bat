@@ -1,4 +1,5 @@
 @echo off
+set /a belessverbose=0
 if not exist "%userprofile%\Desktop\Delete_temp" mkdir "%userprofile%\Desktop\Delete_temp" 
 if not exist "%userprofile%\Desktop\Delete_temp"\Readme.txt echo.This is a special Folder for Recycling Deleted Files.> "%userprofile%\Desktop\Delete_temp"\Readme.txt
 set /a whitelist_Exists=0
@@ -58,10 +59,11 @@ REM echo.Running del_temp
  :deletealready
  
  for /f "delims=" %%i in ('dir /o-d /tc /b /a-d "%userprofile%\Desktop\Delete_temp"') do set last_file=%%i
- echo.Copying files to Recycle Bin (delete_temp). last file to be deleted from delete_temp=%last_file%
- copy %1 "%userprofile%\Desktop\Delete_temp"
+ if defined belessverbose echo.Copying files to Recycle Bin (delete_temp). last file to be deleted from delete_temp=%last_file%
+ 
+ if defined belessverbose (copy %1 "%userprofile%\Desktop\Delete_temp") else (copy %1 "%userprofile%\Desktop\Delete_temp" 1>NUL 2>NUL)
  del /p %1
- echo  = = = = = = = = = 
+ if defined belessverbose echo  = = = = = = = = = 
  if %blacklist%==0 echo errorlevel:%errorlevel%
  if %blacklist%==1 echo.&echo.
  if not exist %1 (if %errorlevel%==0 (echo.File Deleted.&echo Trying to del "%userprofile%\Desktop\Delete_temp\%last_file%"&del "%userprofile%\Desktop\Delete_temp\%last_file%") else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.--^>Checking ..&if exist %1 echo.Found! ----^>%1 )
