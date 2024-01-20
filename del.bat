@@ -39,11 +39,11 @@ REM echo.Running del_temp
  if exist %str% if "%err_level%"=="0" (echo This is a directory.&goto :hehe)
  for /f "tokens=1,2 delims= " %%i in ('dir %str% 2^>NUL') do set exdirec=%%i %%j
  if "%exdirec%"=="0 Dir(s)" (set file_found=0)
- if %file_found%==0 echo File Found!&goto :next
+ if %file_found%==0 echo [1mFile Found![0m&goto :next
  if "%file_found%" NEQ "0" for /f "tokens=1,2 delims= " %%i in ('dir /ah %str% 2^>NUL') do set exdirec=%%i %%j
  if NOT EXIST %str% echo. echo. >NUL& echo. ------^>%str%^<-------&echo.(UNKNOWN ARGUMENT) Please check&GOTO :nothing_but_the_end
  if "%exdirec%"=="0 Dir(s)" (set file_found=0)
- if %file_found%==0 (echo.^(File is Hidden^),&GOTO :nothing_but_the_end) else (GOTO :nothing_but_the_end)
+ if %file_found%==0 (echo.--------^File is Hidden^<-------,&GOTO :nothing_but_the_end) else (GOTO :nothing_but_the_end)
  :next
  REM if exist %str% for /f "delims=" %%i in ('dir /s /b /a-d %str% 2^>NUL') do echo Running delete "%%i"&set filetodelete="%%i"
  if exist %str% goto :delete
@@ -62,14 +62,16 @@ REM echo.Running del_temp
  if defined belessverbose echo.Copying files to Recycle Bin (delete_temp). &echo.your oldest file will be deleted from                                 &echo|set/p=                   delete_temp folder& for /f "tokens=*" %%i in ("%last_file%") do echo. ---^>"%%i"
  if defined belessverbose echo._________________________________________
  if defined belessverbose (copy %1 "%userprofile%\Desktop\Delete_temp") else (copy %1 "%userprofile%\Desktop\Delete_temp" 1>NUL 2>NUL)
-
+ set /a nonsense=1
+ choice /c Z1 /n /m "Press Z to stop recycling for this particular file" /d 1 /T 1
+ if %errorlevel%==1 echo.[1mFile will NOT be Recycled.[0m&set /a nonsense=0
 
  del /p %1
 
  if %blacklist%==0 echo errorlevel:%errorlevel%
  if %blacklist%==1 echo.&echo.
  
- if not exist %1 (if %errorlevel%==0 (echo.[31mFile Deleted.[0m&echo Trying to del "%userprofile%\Desktop\Delete_temp\%last_file%"&del "%userprofile%\Desktop\Delete_temp\%last_file%") else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.-- Checking if deleted ..&if exist %1 echo.No ----^>%1 )
+if not exist %1 (if %errorlevel%==0 (echo.[31mFile Deleted.[0m&if %nonsense%==1 echo Trying to del "%userprofile%\Desktop\Delete_temp\%last_file%"&del "%userprofile%\Desktop\Delete_temp\%last_file%") else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.-- Checking if deleted ..&if exist %1 echo.? No --------^>%1 )
  Exit /B
  :hehe
  popd
