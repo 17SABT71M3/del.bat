@@ -34,4 +34,5 @@ Added Features
 Additional Features/Suggestions to think thru-
 <br>Mechanism to Lockdown del.bat Write/Delete 
 <br>Code Standardization and cleanup for easier customization
+<br>Change variable names/labels to obsufcated letters to avoid conflict with other batch files.
 
