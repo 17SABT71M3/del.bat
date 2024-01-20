@@ -19,7 +19,7 @@ REM echo."%~fp0" %1
 
 
 title REM
-echo. [0m [4m File Deletion is Disabled ![0m             
+echo. [0m [4m x File Deletion is Disabled !! x[0m             
 echo.
 echo.press z to do [delete] anyways
 
@@ -63,8 +63,8 @@ REM echo.Running del_temp
  if defined belessverbose echo._________________________________________
  if defined belessverbose (copy %1 "%userprofile%\Desktop\Delete_temp") else (copy %1 "%userprofile%\Desktop\Delete_temp" 1>NUL 2>NUL)
  set /a nonsense=1
- choice /c Z1 /n /m "Press Z to stop emptying recycle bin off this particular file" /d 1 /T 1
- if %errorlevel%==1 echo.[1mFile will NOT be Exterminated.[0m&set /a nonsense=0
+ choice /c Z1 /n /m "Press Z to stop exterminating this file ("%last_file%) /d 1 /T 1
+ if %errorlevel%==1 echo.[1mThat File will be Saved.[0m&set /a nonsense=0
 
  del /p %1
 
