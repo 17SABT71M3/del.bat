@@ -43,7 +43,7 @@ REM echo.Running del_temp
  if "%file_found%" NEQ "0" for /f "tokens=1,2 delims= " %%i in ('dir /ah %str% 2^>NUL') do set exdirec=%%i %%j
  if NOT EXIST %str% echo. echo. >NUL& echo. ------^>%str%^<-------&echo.(UNKNOWN ARGUMENT) Please check&GOTO :nothing_but_the_end
  if "%exdirec%"=="0 Dir(s)" (set file_found=0)
- if %file_found%==0 (echo File is Hidden,&GOTO :nothing_but_the_end) else (GOTO :nothing_but_the_end)
+ if %file_found%==0 (echo.^(File is Hidden^),&GOTO :nothing_but_the_end) else (GOTO :nothing_but_the_end)
  :next
  REM if exist %str% for /f "delims=" %%i in ('dir /s /b /a-d %str% 2^>NUL') do echo Running delete "%%i"&set filetodelete="%%i"
  if exist %str% goto :delete
