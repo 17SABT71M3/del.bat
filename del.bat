@@ -70,8 +70,7 @@ REM echo.Running del_temp
 
  if %blacklist%==0 echo errorlevel:%errorlevel%
  if %blacklist%==1 echo.&echo.
- 
-if not exist %1 (if %errorlevel%==0 (echo.[31mFile Deleted.[0m&if %nonsense%==1 echo Trying to del "%userprofile%\Desktop\Delete_temp\%last_file%"&del "%userprofile%\Desktop\Delete_temp\%last_file%") else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.-- Checking if deleted ..&if exist %1 echo.? No --------^>%1 )
+if not exist %1 (if %errorlevel%==0 (echo.[31mFile Deleted.[0m&if %nonsense%==1 echo Trying to del "%userprofile%\Desktop\Delete_temp\%last_file%"&del "%userprofile%\Desktop\Delete_temp\%last_file%") else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.-- Checking if deleted ..&if exist %1 echo %1 | findstr /r "[*]"&&echo.Wildcard used in file path. Can not verify || echo.? No --------^>%1 )
  Exit /B
  :hehe
  popd
