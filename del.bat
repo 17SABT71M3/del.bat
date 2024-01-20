@@ -59,12 +59,12 @@ REM echo.Running del_temp
  echo  [0m
  for /f "delims=" %%i in ('dir /o-d /tc /b /a-d "%userprofile%\Desktop\Delete_temp"') do set last_file=%%i
  if defined belessverbose echo._________________________________________
- if defined belessverbose echo.Copying files to Recycle Bin (delete_temp). &echo.your oldest file will be deleted from                                 &echo|set/p=                   delete_temp folder& for /f "tokens=*" %%i in ("%last_file%") do echo. ---^>"%%i"
+ if defined belessverbose echo.Copying files to Recycle Bin (delete_temp). &echo.Oldest file in (delete_temp) folder&echo|set/p=                   will be deleted.& for /f "tokens=*" %%i in ("%last_file%") do echo. ("%%i")
  if defined belessverbose echo._________________________________________
  if defined belessverbose (copy %1 "%userprofile%\Desktop\Delete_temp") else (copy %1 "%userprofile%\Desktop\Delete_temp" 1>NUL 2>NUL)
  set /a nonsense=1
- choice /c Z1 /n /m "Press Z to stop recycling for this particular file" /d 1 /T 1
- if %errorlevel%==1 echo.[1mFile will NOT be Recycled.[0m&set /a nonsense=0
+ choice /c Z1 /n /m "Press Z to stop emptying recycle bin off this particular file" /d 1 /T 1
+ if %errorlevel%==1 echo.[1mFile will NOT be Exterminated.[0m&set /a nonsense=0
 
  del /p %1
 
