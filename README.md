@@ -16,7 +16,7 @@ still prompted.
 White lists on the other hand strike down file deletion.
 <br>Example Usage- ```whitelist.bat .\something.png```
 
-✅You can attrib +h (hide) all the files, including `del.bat`,`blacklist.bat`,`whitelist.bat`,`blacklist.txt`, etc
+You can attrib +h (hide) all the files, including `del.bat`,`blacklist.bat`,`whitelist.bat`,`blacklist.txt`, etc
 from the Desktop view
 
 The program <b>over writes</b> the following locations, Make sure u do not have any files/folders with the same name
