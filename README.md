@@ -1,4 +1,6 @@
 Just a short note: 66<br>
+<p align="center"><img src="https://github.com/175M3H3RE/del_.bat/blob/4ca2f2fa972a4f4bc2538febfa392faa3681f92c/ea03bae8-ad03-403f-9ece-601c35719f65.png" height=200 >
+<img src="https://github.com/175M3H3RE/del_.bat/blob/4ca2f2fa972a4f4bc2538febfa392faa3681f92c/thumbs-up-skull.gif" height=150></p>
 U can replace the `DEL` command by a combination using the `DOSKEY` macro and updating<br>
 the registry key `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor`<br>
 and adding a string (`AutoRun`) containing path of the doskey macro  
