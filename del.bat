@@ -74,21 +74,23 @@ REM echo.Running del_temp
  if defined belessverbose (copy %1 "%userprofile%\Desktop\Delete_temp") else (copy %1 "%userprofile%\Desktop\Delete_temp" 1>NUL 2>NUL)
 if defined belessverbose echo.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-if defined belessverbose echo.Oldest file in temp folder is removed automaticaly
+if defined belessverbose echo.Oldest file (%last_file%) PURGED
 if defined belessverbose echo.________________________________________________
 
  set /a nonsense=1
  timeout 2 >NUL
- choice /c x1 /n /m "Press X to keep that file ("%last_file%)" /d 1 /T 2
+ echo|set /p=[ X ] to keep it........
+ choice /c xO /n /d o /T 2
+
  if %errorlevel%==1 echo.[1m File will be Kept.[0m&set /a nonsense=0
- if %errorlevel%==2 echo.%last_file% will be Removed.&set /a nonsense=1
+ if %errorlevel%==2 echo.File:%last_file% will be Removed.&set /a nonsense=1
  echo.
  choice /c YN /m "Delete? Y/N" /n
  set /a commandexecuted=0
- if %errorlevel%==1  if exist %1 echo %1 | findstr /r "[*]"&&del /p %1 || del %1&set /a commandexecuted=1
+ if %errorlevel%==1  if exist %1 echo %1 | findstr /r "[*]" >NUL&&del /p %1 || del %1&set /a commandexecuted=1
  if %blacklist%==0 if %commandexecuted%==1 echo errorlevel:%errorlevel%
  if %blacklist%==1 echo.&echo.
-if not exist %1 (if %errorlevel%==0 (echo.[31mFile Deleted.[0m ^(%file_name%^)&if %nonsense%==1 del "%userprofile%\Desktop\Delete_temp\"%last_file%) else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.^(^( Checking if deleted ^)^)&if exist %1 echo %1 | findstr /r "[*]"&&echo.Wildcard used in file path. Can not verify || echo.? NOT ^(%file_name%^) )
+if not exist %1 (if %errorlevel%==0 (echo.[31mFile Deleted.[0m ^(%file_name%^)&if %nonsense%==1 del "%userprofile%\Desktop\Delete_temp\"%last_file%) else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.^(^( Checking if deleted ^)^)&if exist %1 echo %1 | findstr /r "[*]" >NUL&&echo.Wildcard used in file path. Can not verify || echo.? NOT ^(%file_name%^) )
  Exit /B
  :hehe
  popd
