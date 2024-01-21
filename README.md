@@ -35,7 +35,7 @@ Added Features
 <br>✅Added support for option of not recycling.
 
 
-Additional Features to think for implementation-
+Additional implementations pending-
 <br>Mechanism to Lockdown del.bat Write/Delete 
 <br>Code Standardization and cleanup for easier customization
 <br>Change variable names/labels to obsufcated letters to avoid conflict with other batch files.
