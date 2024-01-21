@@ -14,11 +14,12 @@ if not exist "%userprofile%\Desktop\Delete_temp" mkdir "%userprofile%\Desktop\De
 if not exist "%userprofile%\Desktop\Delete_temp"\Readme.txt echo.This is a special Folder for Recycling Deleted Files.> "%userprofile%\Desktop\Delete_temp"\Readme.txt
 set /a whitelist_Exists=0
 set /a blacklist_Exists=0
-set str=%1
-set arg=%2
+for /f "tokens=* delims=" %%i in ('echo %1') do set str=%1
+for /f "tokens=* delims=" %%i in ('echo %2') do set arg=%2
 if not defined str GOTO :nothing_but_the_end
+if defined str if "%str%"=="" GOTO :nothing_but_the_end
 if defined arg if "%arg%"=="?" set file_return="%~fp1"
-if defined arg if "%arg%"=="?" echo %file_return%&GOTO :EOF
+if defined arg if "%arg%"=="?" (echo %file_return%&GOTO :EOF) else (goto :EOF)
 for /f "delims=" %%i in ('CALL "%~fp0" %str% ?') DO set file_name=%%i
 set /a blacklist=0
 
