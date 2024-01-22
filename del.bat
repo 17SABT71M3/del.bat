@@ -17,7 +17,7 @@ set /a blacklist_Exists=0
 for /f "tokens=* delims=" %%i in ('echo %1') do set str=%1
 for /f "tokens=* delims=" %%i in ('echo %2') do set arg=%2
 if not defined str GOTO :nothing_but_the_end
-if defined str if "%str%"=="" GOTO :nothing_but_the_end
+if defined str if %str%=="" GOTO :nothing_but_the_end
 if defined arg if "%arg%"=="?" set file_return="%~fp1"
 if defined arg if "%arg%"=="?" (echo %file_return%&GOTO :EOF) else (goto :EOF)
 for /f "delims=" %%i in ('CALL "%~fp0" %str% ?') DO set file_name=%%i
@@ -27,7 +27,6 @@ if exist "%userprofile%\desktop\blacklist.txt" set /a blacklist_exists=1
 if exist "%userprofile%\desktop\blacklist.txt" for /f "delims=" %%i in ('dir "%userprofile%\desktop\blacklist.txt" /ah') do set /a  blacklist_exists=1
 if defined str if %blacklist_exists%==1 set /a blacklist=1&type "%userprofile%\desktop\blacklist.txt" | findstr /n /c:%file_name% 2>NUL&&(echo.MATCHES BLACKLIST&goto :del_temp)
 REM echo."%~fp0" %1
-
 
 title REM
 echo. [0m [4m .x Delete is Disabled !! x.[0m             
