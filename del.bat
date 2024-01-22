@@ -27,15 +27,11 @@ if exist "%userprofile%\desktop\blacklist.txt" set /a blacklist_exists=1
 if exist "%userprofile%\desktop\blacklist.txt" for /f "delims=" %%i in ('dir "%userprofile%\desktop\blacklist.txt" /ah') do set /a  blacklist_exists=1
 if defined str if %blacklist_exists%==1 set /a blacklist=1&type "%userprofile%\desktop\blacklist.txt" | findstr /n /c:%file_name% 2>NUL&&(echo.MATCHES BLACKLIST&goto :del_temp)
 REM echo."%~fp0" %1
-
-title REM
-echo. [0m [4m .x Delete is Disabled !! x.[0m             
-echo.
-echo.press z to do [delete] 
-
-
+echo.press z to really delete
+pause >NUL
+echo.press now
 choice /n /c YNZ /d y /t 1 >NUL
-
+title REM
 if %errorlevel%==3 goto :del_temp
 GOTO :nothing_but_the_end
 :del_temp
@@ -68,12 +64,12 @@ REM echo.Running del_temp
  echo  [0m
  for /f "delims=" %%i in ('dir /o-d /tc /b /a-d "%userprofile%\Desktop\Delete_temp"') do set last_file="%%i"
  if defined belessverbose echo.________________________________________________
- if defined belessverbose echo.Copies will be kept in (delete_temp). 
- if defined belessverbose echo|set/p=Copied Status:
+ if defined belessverbose echo.File will be copied itself to (delete_temp). 
+ if defined belessverbose echo|set/p=Status:
  if defined belessverbose (copy %1 "%userprofile%\Desktop\Delete_temp") else (copy %1 "%userprofile%\Desktop\Delete_temp" 1>NUL 2>NUL)
 if defined belessverbose echo.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-if defined belessverbose echo.Oldest file (%last_file%) PURGED
+if defined belessverbose echo.Oldest file (%last_file%) will be PURGED
 if defined belessverbose echo.________________________________________________
 
  set /a nonsense=1
@@ -82,14 +78,14 @@ if defined belessverbose echo.________________________________________________
  choice /c xO /n /d o /T 2
 
  if %errorlevel%==1 echo.[1mFile will be Kept.[0m&set /a nonsense=0
- if %errorlevel%==2 echo.File:%last_file% will be Removed.&set /a nonsense=1
+ if %errorlevel%==2 echo.Status:%last_file% will be Removed.&set /a nonsense=1
  echo.
- choice /c YN /m "Delete? Y/N" /n
+ choice /c YN /m "Delete File? Y/N" /n
  set /a commandexecuted=0
  if %errorlevel%==1  if exist %1 echo %1 | findstr /r "[*]" >NUL&&del /p %1 || del %1&set /a commandexecuted=1
  if %blacklist%==0 if %commandexecuted%==1 echo errorlevel:%errorlevel%
  if %blacklist%==1 echo.&echo.
-if not exist %1 (if %errorlevel%==0 (echo.[31mFile Deleted.[0m ^(%file_name%^)&if %nonsense%==1 del "%userprofile%\Desktop\Delete_temp\"%last_file%) else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&echo.^(^( Checking if deleted ^)^)&if exist %1 echo %1 | findstr /r "[*]" >NUL&&echo.Wildcard used in file path. Can not verify || echo.? NOT ^(%file_name%^) )
+if not exist %1 (if %errorlevel%==0 (echo.[31mFile Deleted.[0m ^(%file_name%^)&if %nonsense%==1 del "%userprofile%\Desktop\Delete_temp\"%last_file%) else (echo.Error finding file,)) else ( (if %blacklist%==0 echo.Cancelled.)&if exist %1 echo %1 | findstr /r "[*]" >NUL&&echo.Wildcard used in file path. Can not verify || echo.? NOT DELETED ^(%file_name%^) )
  Exit /B
  :hehe
  popd
