@@ -81,7 +81,7 @@ if defined belessverbose echo.________________________________________________
  echo|set /p=[ X ] to keep it........
  choice /c xO /n /d o /T 2
 
- if %errorlevel%==1 echo.[1m File will be Kept.[0m&set /a nonsense=0
+ if %errorlevel%==1 echo.[1mFile will be Kept.[0m&set /a nonsense=0
  if %errorlevel%==2 echo.File:%last_file% will be Removed.&set /a nonsense=1
  echo.
  choice /c YN /m "Delete? Y/N" /n
