@@ -63,14 +63,14 @@ REM echo.Running del_temp
  :deletealready
  echo  [0m
  for /f "delims=" %%i in ('dir /o-d /tc /b /a-d "%userprofile%\Desktop\Delete_temp"') do set last_file="%%i"
- if defined belessverbose echo.________________________________________________
+ if defined belessverbose echo._______________________________________________
  if defined belessverbose echo.File will be copied itself to (delete_temp). 
  if defined belessverbose echo|set/p=Status:
  if defined belessverbose (copy %1 "%userprofile%\Desktop\Delete_temp") else (copy %1 "%userprofile%\Desktop\Delete_temp" 1>NUL 2>NUL)
-if defined belessverbose echo.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if defined belessverbose  echo.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-if defined belessverbose echo.Oldest file (%last_file%) will be PURGED
-if defined belessverbose echo.________________________________________________
+if defined belessverbose  echo.Oldest file (%last_file%) will be PURGED
+if defined belessverbose  echo._______________________________________________
 
  set /a nonsense=1
  timeout 2 >NUL
