@@ -4,9 +4,9 @@ Just a short note: 66<br>
 
 
 
-U can replace the `DEL` command by a combination using the `DOSKEY` macro and updating<br>
+U can replace the native `DEL` command by a combination using the `DOSKEY` macro and updating<br>
 the registry key `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor`<br>
-and adding a string (`AutoRun`) containing path of the doskey macro  
+and adding a string (`AutoRun`) containing path of the doskey macro file
 
 This is What my DOSKEY macro file looks like
 ```
@@ -38,7 +38,7 @@ Added Features
 <br>✅Added support for option of not recycling.
 
 ##### Syntax :-<br>
-`del.bat [filename] q'  ------> Skips recycling
+`del.bat [filename] q`  ------> Skips recycling<br>
 `del.bat [filename]` -------> Normal delete (requires User to press Z key immediately)
 
 Additional implementations pending-
