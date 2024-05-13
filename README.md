@@ -17,9 +17,8 @@ doskey notepad="c:\users\[my username]\desktop\notepad.bat" $*
 ```
 
 Update: Added support for Whitelists (whitelist.txt) and Blacklists (blacklist.txt)
-Black lists cut thru the chase when there is no problem deleting a file. You are
-still prompted.
-White lists on the other hand strike down file deletion.
+
+White lists strike down file deletion.
 <br>Example Usage- ```whitelist.bat .\something.png```
 
 You can attrib +h (hide) all the files, including `del.bat`,`blacklist.bat`,`whitelist.bat`,`blacklist.txt`, etc
