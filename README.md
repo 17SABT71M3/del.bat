@@ -1,5 +1,5 @@
 Just a short note: 66<br>
-<p align="center">[<img src="https://github.com/175M3H3RE/del_.bat/blob/4ca2f2fa972a4f4bc2538febfa392faa3681f92c/ea03bae8-ad03-403f-9ece-601c35719f65.png" height=100>](https://github.com/17SABT71M3/del_.bat/blob/832c94654edf0bb9da2f884aa495741c163d6a15/DEL.BAT.png)
+<p align="center">[<img src="DEL.BAT.png" height=100>](https://github.com/17SABT71M3/del_.bat/blob/832c94654edf0bb9da2f884aa495741c163d6a15/DEL.BAT.png)
 
 
 
