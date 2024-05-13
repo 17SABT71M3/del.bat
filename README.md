@@ -37,6 +37,9 @@ Added Features
 <br>✅Remove the line containing ```set /a belessverbose=0``` for less verbosity.
 <br>✅Added support for option of not recycling.
 
+##### Syntax :-<br>
+`del.bat [filename] q'  ------> Skips recycling
+`del.bat [filename]` -------> Normal delete (requires User to press Z key immediately)
 
 Additional implementations pending-
 <br>Mechanism to Lockdown del.bat Write/Delete 
