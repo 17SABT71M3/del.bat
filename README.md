@@ -38,10 +38,11 @@ Added Features
 
 ##### Syntax :-<br>
 `del.bat [filename] q`  ------> Skips recycling<br>
-`del.bat [filename]` -------> Normal delete (requires User to press Z key immediately)
-
-Additional implementations pending-
-<br>Mechanism to Lockdown del.bat Write/Delete 
-<br>Code Standardization and cleanup for easier customization
-<br>Change variable names/labels to obsufcated letters to avoid conflict with other batch files.
+`del.bat [filename]` -------> Normal delete (requires User to press Z key immediately)<br>
+`-----------------------------------------------------------------------------------------------`<br>
+`|`Additional implementations pending-`                                                         |`
+<br>`|`Mechanism to Lockdown del.bat Write/Delete `                                                 |`
+<br>`|`Code Standardization and cleanup for easier customization`                                     |`
+<br>`|`Change variable names/labels to obsufcated letters to avoid conflict with other batch files.`        |`
+<br>`-----------------------------------------------------------------------------------------------`
 
