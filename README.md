@@ -43,6 +43,7 @@ Added Features
 `|`Additional implementations pending-`                                                         |`
 <br>`|`Mechanism to Lockdown del.bat Write/Delete `                                                 |`
 <br>`|`Code Standardization and cleanup for easier customization`                                     |`
-<br>`|`Change variable names/labels to obsufcated letters to avoid conflict with other batch files.`        |`
+<br>`|`Change variable names/labels to obsufcated letters to avoid conflict with other batch files.`
+<br>`|`Blacklists need more purpose.        |`
 <br>`-----------------------------------------------------------------------------------------------`
 
